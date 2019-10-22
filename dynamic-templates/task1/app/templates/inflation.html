@@ -1,0 +1,73 @@
+{% load my_filter %}
+
+<!DOCTYPE html>
+<!-- {% load static %} -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Инфляция в России</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    {% block content %}
+      <div class="row">
+        <h1 class="col s12">Инфляция в России</h1>
+        <div class="col s12 m8">
+        
+        <!-- Ваша логика -->
+          <div class="row">
+            <table rules="all">
+              <thead>
+                <tr>
+                  <th>Год</th>
+                  <th>Январь</th>
+                  <th>Февраль</th>
+                  <th>Март</th>
+                  <th>Апрель</th>
+                  <th>Май</th>
+                  <th>Июнь</th>
+                  <th>Июль</th>
+                  <th>Август</th>
+                  <th>Сентярь</th>
+                  <th>Октябрь</th>
+                  <th>Ноябрь</th>
+                  <th>Декабрь</th>
+                  <th>Всего:</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for line in contextrez %}
+              <tr>
+                <td>{{ line.Year }}</td>
+                <td bgcolor = {{ line.Yan|float_color }} > {{ line.Yan }} </td>
+                <td bgcolor = {{ line.Feb|float_color }} > {{ line.Feb }} </td>
+                <td bgcolor = {{ line.Mar|float_color }} > {{ line.Mar }} </td>
+                <td bgcolor = {{ line.Apr|float_color }} > {{ line.Apr }} </td>
+                <td bgcolor = {{ line.Mai|float_color }} > {{ line.Mai }} </td>
+                <td bgcolor = {{ line.Jun|float_color }} > {{ line.Jun }} </td>
+                <td bgcolor = {{ line.Jul|float_color }} > {{ line.Jul }} </td>
+                <td bgcolor = {{ line.Aug|float_color }} > {{ line.Aug }} </td>
+                <td bgcolor = {{ line.Sep|float_color }} > {{ line.Sep }} </td>
+                <td bgcolor = {{ line.Okt|float_color }} > {{ line.Okt }} </td>
+                <td bgcolor = {{ line.Nov|float_color }} > {{ line.Nov }} </td>
+                <td bgcolor = {{ line.Dec|float_color }} > {{ line.Dec }} </td>
+                <td bgcolor="#808080">{{ line.Total }}</td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <br>
+            {{ context.Year }}
+        </div>
+      {% endblock %}
+    </div>
+  </body>
+</html>
